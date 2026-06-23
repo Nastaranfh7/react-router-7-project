@@ -1,7 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
 
-
 export default function RootLayout() {
+  console.log("RootLayout Loaded");
+
   return (
     <div>
       <nav style={{ padding: "1rem", background: "#f5f5f5" }}>
