@@ -7,6 +7,7 @@ import DashboardHome from "./dashboard/DashboardHome";
 import Orders from "./dashboard/Orders";
 import Products from "./dashboard/Products";
 import Settings from "./dashboard/Settings";
+import ProductDetail from "./dashboard/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
           { index: true, element: <DashboardHome /> },
           { path: "orders", element: <Orders /> },
           { path: "products", element: <Products /> },
+          { path: "products/:id", element: <ProductDetail/> }, 
           { path: "settings", element: <Settings /> },
         ],
       },
