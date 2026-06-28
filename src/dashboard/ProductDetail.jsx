@@ -1,10 +1,7 @@
-import { useParams } from "react-router-dom";
-import { products } from "../data/products";
+import { useLoaderData } from "react-router-dom";
 
 export default function ProductDetail() {
-  const { id } = useParams();
-
-  const product = products.find((p) => p.id === Number(id));
+  const product = useLoaderData(); // 🔥 داده از Loader میاد
 
   if (!product) {
     return (

@@ -1,21 +1,16 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
-export default function RootLayout() {
+export default function DashboardLayout() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      
-      {/* Navbar */}
-      <nav className="bg-white shadow px-6 py-4 flex gap-6 text-lg font-medium">
-        <Link to="/" className="hover:text-blue-600">Home</Link>
-        <Link to="/about" className="hover:text-blue-600">About</Link>
-        <Link to="/dashboard" className="hover:text-blue-600">Dashboard</Link>
-      </nav>
+    <div className="min-h-screen bg-gray-100 flex">
+      {/* Sidebar ثابت سمت چپ */}
+      <Sidebar />
 
-      {/* Main content */}
-      <main className="p-6">
+      {/* محتوای داخلی داشبورد */}
+      <main className="flex-1 p-6">
         <Outlet />
       </main>
-
     </div>
   );
 }

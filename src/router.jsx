@@ -9,6 +9,12 @@ import Products from "./dashboard/Products";
 import Settings from "./dashboard/Settings";
 import ProductDetail from "./dashboard/ProductDetail";
 
+import { products } from "./Data/products";
+
+export async function productsLoader() {
+  return products;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -16,14 +22,25 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <App /> },
       { path: "about", element: <h2>About Page</h2> },
+
       {
         path: "dashboard",
         element: <DashboardLayout />,
         children: [
           { index: true, element: <DashboardHome /> },
           { path: "orders", element: <Orders /> },
-          { path: "products", element: <Products /> },
-          { path: "products/:id", element: <ProductDetail/> }, 
+
+          {
+            path: "products",
+            element: <Products />,
+            loader: productsLoader,   // 🔥 Loader وصل شد
+          },
+
+          {
+            path: "products/:id",
+            element: <ProductDetail />,
+          },
+
           { path: "settings", element: <Settings /> },
         ],
       },
