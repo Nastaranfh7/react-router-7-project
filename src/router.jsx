@@ -10,7 +10,13 @@ import Settings from "./dashboard/Settings";
 import ProductDetail from "./dashboard/ProductDetail";
 
 import { products } from "./Data/products";
-import { orders } from "./Data/orders";   // ✔ دادهٔ سفارش‌ها
+import { orders } from "./Data/orders";
+import { settings } from "./Data/settings";   // ✔ دادهٔ Settings
+
+// ✔ Loader برای Settings
+export async function settingsLoader() {
+  return settings;
+}
 
 // ✔ Loader برای Orders
 export async function ordersLoader() {
@@ -36,27 +42,28 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <DashboardHome /> },
 
-          // ✔ مسیر Orders با Loader
           {
             path: "orders",
             element: <Orders />,
             loader: ordersLoader,
           },
 
-          // ✔ مسیر Products با Loader
           {
             path: "products",
             element: <Products />,
             loader: productsLoader,
           },
 
-          // ✔ مسیر ProductDetail بدون Loader (فعلاً)
           {
             path: "products/:id",
             element: <ProductDetail />,
           },
 
-          { path: "settings", element: <Settings /> },
+          {
+            path: "settings",
+            element: <Settings />,
+            loader: settingsLoader,
+          },
         ],
       },
     ],
