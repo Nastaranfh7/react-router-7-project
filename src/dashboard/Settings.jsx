@@ -1,24 +1,18 @@
-import { useLoaderData } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 
 export default function Settings() {
-  const settings = useLoaderData(); // 🔥 داده از Loader میاد
+  const result = useActionData();
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Settings</h1>
+    <div>
+      <h2>Settings</h2>
 
-      <div className="bg-white shadow p-4 rounded space-y-3">
-        <p>
-          <strong>Username:</strong> {settings.username}
-        </p>
-        <p>
-          <strong>Theme:</strong> {settings.theme}
-        </p>
-        <p>
-          <strong>Notifications:</strong>{" "}
-          {settings.notifications ? "On" : "Off"}
-        </p>
-      </div>
+      {result && <p>Saved: {result.username}</p>}
+
+      <Form method="post">
+        <input name="username" placeholder="Your name" />
+        <button type="submit">Save</button>
+      </Form>
     </div>
   );
 }
